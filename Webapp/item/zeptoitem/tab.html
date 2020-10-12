@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./common/common.css">
+    <style>
+     body,html{
+         width:100%;
+         height:100%;
+     }
+    .tabwarp{
+        width:100%;
+        height:100%;
+    }
+    .top{
+        position:absolute;
+        width:100%;
+        height:49px;
+        background:#ccc;
+    }
+    .search{
+        width:100%;
+        padding-left:49px;
+        padding-right:49px;
+    }
+    .search input{
+        width:100%;
+        height:40px;
+        border-radius:20px;
+        padding-left:20px;
+        margin-top:4px;
+        color:#ccc;
+    }
+    .back{
+        position:absolute;
+        top:0;
+        left:0;
+        width:49px;
+        height:49px;
+        background:url('./images/jd-sprites.png') no-repeat;
+        background-size:200px 200px;
+        padding:14px;
+        background-position-x:-20px;
+        background-origin:content-box;
+        background-clip:content-box;
+    }
+    .menu{
+        position:absolute;
+        top:0;
+        right:0;
+        width:49px;
+        height:49px;
+        background:url('./images/jd-sprites.png') no-repeat;
+        background-size:200px 200px;
+        padding:13px;
+        background-position-x:-61px;
+        background-origin:content-box;
+        background-clip:content-box;
+       
+    }
+    .content{
+        width:100%;
+        height:100%;
+        /* background:green; */
+        padding-top:49px;
+    }
+    .contentLeft{
+        width:100px;
+        height:100%;
+        /* background:orange; */
+        float:left;
+        overflow-y:auto;
+    }
+    .contentLeft li{
+        width:100%;
+        height:50px;
+    }
+    .contentLeft li > a{
+        display:block;
+        width:100%;
+        height:100%;
+        text-align:center;
+        line-height:50px;
+        background-color:#eee;
+        color:#333;
+        border-bottom:1px solid #ccc;
+        border-right:1px solid #ccc;
+    }
+    .contentLeft li.active > a{
+        border-bottom:none;
+        border-right:none;
+        background-color:#fff;
+        color:#e92322;
+    }
+    .contentRight{
+        height:100%;
+        margin-left:100px;
+        /* background:palegoldenrod; */
+       /* 里面有一个子元素没有高内容多需要出现滚动条 */
+        display:flex;
+        flex-direction: column;
+    }
+    .contentRight .imgbox{
+        display:block;
+        width:100%;
+    }
+    .contentRight .imgbox>img{
+        width:100%;
+        /* 没有高 */
+       
+    }
+    .contentRight  h3{
+        padding-left:13px;
+        height:30px;
+        line-height:30px;
+        border-bottom:1px solid #ccc;
+    }
+    .contentRight .hotcatgray{
+        width:100%;
+        padding-top:10px;
+        flex:1;
+        overflow: auto;
+    }
+    .contentRight ul li{
+        width:33.33%;
+        float:left;
+        text-align:center;
+    }
+    .contentRight ul li img{
+        width:100%;
+    }
+    </style>
+</head>
+<body>
+    <div class='tabwarp'>
+        <div class="top">
+            <a href="#" class='back'></a>
+            <form action="" class='search'><input type="text"></form>
+            <a href="" class='menu'></a>
+        </div>
+        <div class="content">
+            <div class="contentLeft">
+                    <ul>
+                            <li class=""><a href="javascript:;">热门推荐</a></li>
+                            <li class="active"><a href="javascript:;">潮流女装</a></li>
+                            <li class=""><a href="javascript:;">品牌男装</a></li>
+                            <li class=""><a href="javascript:;">内衣配饰</a></li>
+                            <li class=""><a href="javascript:;">家用电器</a></li>
+                            <li class=""><a href="javascript:;">电脑办公</a></li>
+                            <li class=""><a href="javascript:;">手机数码</a></li>
+                            <li class=""><a href="javascript:;">母婴频道</a></li>
+                            <li class=""><a href="javascript:;">图书</a></li>
+                            <li class=""><a href="javascript:;">家居家纺</a></li>
+                            <li class=""><a href="javascript:;">居家生活</a></li>
+                            <li class=""><a href="javascript:;">家具建材</a></li>
+                            <li class=""><a href="javascript:;">热门推荐</a></li>
+                            <li class=""><a href="javascript:;">潮流女装</a></li>
+                            <li class=""><a href="javascript:;">品牌男装</a></li>
+                            <li class=""><a href="javascript:;">内衣配饰</a></li>
+                            <li class=""><a href="javascript:;">家用电器</a></li>
+                            <li class=""><a href="javascript:;">电脑办公</a></li>
+                            <li class=""><a href="javascript:;">手机数码</a></li>
+                            <li class=""><a href="javascript:;">母婴频道</a></li>
+                            <li class=""><a href="javascript:;">图书</a></li>
+                            <li class=""><a href="javascript:;">家居家纺</a></li>
+                            <li class=""><a href="javascript:;">居家生活</a></li>
+                            <li class=""><a href="javascript:;">家具建材</a></li>
+                        </ul>
+            </div>
+            <div class="contentRight">
+                <a href="#" class='imgbox'><img src="./uploads/banner_1.jpg" alt=""></a>
+                <h3>热门菜单</h3>
+                <div class='hotcatgray'>
+                    <ul>
+                        <li>
+                            <a href="">
+                                <img src="./uploads/nv-fy.jpg" alt="">
+                                <p>毛衣</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="./uploads/nv-fy.jpg" alt="">
+                                <p>毛衣</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="./uploads/nv-fy.jpg" alt="">
+                                <p>毛衣</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="./uploads/nv-fy.jpg" alt="">
+                                <p>毛衣</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="./uploads/nv-fy.jpg" alt="">
+                                <p>毛衣</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="./uploads/nv-fy.jpg" alt="">
+                                <p>毛衣</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="./uploads/nv-fy.jpg" alt="">
+                                <p>毛衣</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="./uploads/nv-fy.jpg" alt="">
+                                <p>毛衣</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="./uploads/nv-fy.jpg" alt="">
+                                <p>毛衣</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="./uploads/nv-fy.jpg" alt="">
+                                <p>毛衣</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="./uploads/nv-fy.jpg" alt="">
+                                <p>毛衣</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="./uploads/nv-fy.jpg" alt="">
+                                <p>毛衣</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="./uploads/nv-fy.jpg" alt="">
+                                <p>毛衣</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="./uploads/nv-fy.jpg" alt="">
+                                <p>毛衣</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="./uploads/nv-fy.jpg" alt="">
+                                <p>毛衣</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="./uploads/nv-fy.jpg" alt="">
+                                <p>毛衣</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="./uploads/nv-fy.jpg" alt="">
+                                <p>毛衣</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="./uploads/nv-fy.jpg" alt="">
+                                <p>毛衣</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

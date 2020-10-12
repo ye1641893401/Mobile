@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.item{
+				width: 200px;
+				height:200px;
+				background: pink;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="item"></div>
+	</body>
+	<script type="text/javascript">
+		//触屏指针                          pc端
+		/*
+			touchstart		               mousedown
+			touchmove(不可能单独触发)		mousemove(可以单独触发)
+				  
+			touchend		               mouseup
+		*/
+		window.onload=function(){
+			var item = document.querySelector(".item");
+			
+			
+			item.addEventListener("touchstart",function(ev){
+				console.log(ev.cancelBubble) //查看是否可以取消默认事件
+                ev.preventDefault()//阻止默认行为
+                ev.stopPropagation()//阻止冒泡
+				console.log("touchstart")
+			},false)
+			item.addEventListener("touchmove",function(ev){
+                ev.preventDefault()
+                ev.stopPropagation()//阻止冒泡
+				console.log("touchmove")
+			},false)
+			item.addEventListener("touchend",function(ev){
+                ev.preventDefault()
+                ev.stopPropagation()//阻止冒泡
+				console.log("touchend")
+			},false)
+
+			//  不能这么写
+			
+			// item.ontouchstart=function(){
+			// 	console.log("ontouchstart")
+			// }
+			// item.ontouchmove=function(){
+			// 	console.log("ontouchmove")
+			// }
+			// item.ontouchend=function(){
+			// 	console.log("ontouchend")
+			// }
+		}
+		
+		
+	</script>
+</html>

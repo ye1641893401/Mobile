@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+		<title></title>
+		<style type="text/css">
+			
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#test{
+				width: 16rem;
+				height: 1px;
+				margin-top: 1rem;
+				background: black;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="test"></div>
+	</body>
+    <script type="text/javascript">
+    // 分析1px的原因 dpr不同 dpr = 2 那1px = 物理像素的 2px
+    //   dpr =3  1px = 物理像素 3px 
+	// rem+系统缩放
+	// 		1.主体适配采用rem适配 并放大rem的基值(dpr倍)
+	// 		2.再通过系统缩放 缩回dpr倍，initial-scale=1/dpr
+	// 	响应式+变换缩放
+		window.onload=function(){
+			(function(){
+				var dpr  = window.devicePixelRatio||1;
+				var styleNode = document.createElement("style");
+				var w = document.documentElement.clientWidth*dpr/16;
+				styleNode.innerHTML="html{font-size:"+w+"px!important}";
+				document.head.appendChild(styleNode);
+				
+				var scale = 1/dpr;
+				var meta = document.querySelector("meta[name='viewport']");
+				meta.content="width=device-width,initial-scale="+scale;
+			})()
+		}
+	</script>
+</html>

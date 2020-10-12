@@ -1,0 +1,237 @@
+#jd-warp{
+    /* 设置最大最小宽度就是测试宽度放大缩小不会跟的无限大，真机无限大不会内容无限大 */
+    width:100%;
+    /* 内容最大宽度 */
+    max-width:640px;
+    /* 最小宽度 */
+    min-width:320px;
+
+    margin:0 auto;
+
+    background-color:#ccc;
+
+}
+/* 搜素块 */
+.jd-search{
+    position:fixed;
+    z-index:999;
+    width:100%;
+    max-width:640px;
+    height:40px;
+    background:rgba(233,35,34,0);
+}
+.jd-logo{
+    position:absolute;
+    top:8px;
+    left:10px;
+    width:56px;
+    height:23px;
+    background:url('../images/jd-sprites.png') no-repeat;
+    background-position:0 -107px;
+    /* 给的是二倍图400*400 变成 */
+    background-size:200px 200px;
+}
+.searchInput{
+    width:100%;
+    padding:0 50px 0 76px;
+}
+.searchInput>input{
+      width:100%;
+      height:30px;
+      border-radius:15px;
+      margin-top:5px;
+      padding-left:30px;
+      color:#666;
+      ;
+}
+/* 使用伪元素添加放大镜 */
+.searchInput::before{
+    display:block;
+    content:'';
+    width:23px;
+    height:27px;
+    position:absolute;
+    top:9px;
+    left:79px;
+    background: url('../images/jd-sprites.png') no-repeat;
+    background-position:-58px -107px;
+    /* 给的是二倍图400*400 变成 */
+    background-size:200px 200px;
+
+}
+.login{
+    position:absolute;
+    top:0;
+    right:0;
+    width:40px;
+    height:40px;
+    /* background: green; */
+    line-height:40px;
+    color:#fff;
+    font-size:16px;
+}
+
+ /* 轮播 */
+ .jd-banner{
+    position:relative;
+    width:100%;
+    overflow: hidden;
+}
+.banner-content{
+    width:800%;
+     /*position: absolute;  如果使用absolute定位，会造成父容器无法获取由子元素的撑开的高度*/
+    position:relative;
+    
+}
+.banner-content li{
+    width:12.5%;
+    float:left;
+}
+/* 取掉图片因为基线对齐产生的小黑变 
+         1.设置为块元素
+         2.可以将文本字体大小设置为0
+         3.vertical-align:bottom
+      */
+.banner-content li img{
+    width:100%;
+    vertical-align:bottom;
+}
+/* 按钮 */
+.banner-btn{
+   width:118px;
+   overflow:hidden;
+   position:absolute;
+   left:50%;
+   bottom:5px;
+   margin-left:-59px;     
+  }
+.banner-btn li{
+    width:6px;
+    height:6px;
+    border:1px solid #fff;
+    border-radius:50%;
+    margin-left:10px;
+    float:left;
+}
+.banner-btn li:first-child{
+    margin-left:0;
+}
+.BtnActive{
+    background:#fff;
+}
+
+  /* 导航 */
+  .jd-nav{
+    width:100%;
+    background:#fff;
+    text-align:center;
+    padding:5px 0;
+}
+.jd-nav ul li{
+    width:25%;
+    float:left;
+    margin-top:5px;
+}
+.jd-nav ul li img{
+    width:50px;
+}
+
+  /* 产品 */
+.jd-productBox{
+    width:100%;
+}
+ .jd-product {
+     width:100%;
+     background:#fff;
+     margin-top:5px;
+ }
+ .jd-product .title{
+     width:100%;
+     height:25px;
+     line-height:25px;
+     padding-left:16px;
+    border-bottom:1px solid #ccc;
+ }
+ .jd-product .title> h3{
+     position:relative;
+ }
+ /* 小红线 */
+ .jd-product .title> h3::before{
+     content:'';
+     display:block;
+     width:4px;
+     height:15px;
+     background:red;
+     position:absolute;
+     top:5px;
+     left:-8px; 
+ }
+ /*  */
+ .a-50{
+     display:block;
+     width:50%;
+ }
+ .a-50>img{
+     width:100%;
+     vertical-align: bottom;
+ }
+ .borderR{
+     border-right:1px solid #ccc;
+ }
+ .borderB{
+     border-bottom:1px solid #ccc;
+ }
+
+   /* 秒杀 */
+   .jd-Sk{
+
+}
+.jd-Sk .title{
+    padding-left:4px;
+    border-bottom:none;
+}
+.jd-Sk span{
+    display:inline-block;
+    /* 祛除默认间距 */
+    margin-right:-3px;
+}
+.jd-Sk .SKicon{
+      float:left;
+     width:20px;
+     height:16px;
+     background:url('../uploads/seckill-icon.png') no-repeat;
+     background-size:20px 16px;
+     margin-top:3px;
+}
+.jd-Sk .SKTime>span{
+    width:15px;
+    height:20px;
+    line-height:20px;
+    background:#000;
+    color:#fff;
+    text-align:center;
+}
+.jd-Sk .SKTime>span:nth-child(3n){
+     width:8px;
+    background:transparent;
+    color:#000;
+    text-align:center;
+}
+.jd-Sk .SKText{
+    color:orange;
+    margin-left:4px;
+}
+/* 内容 */
+.jd-Sk .product-content{
+    width:100%;
+    margin-top:20px;
+}
+.jd-Sk .product-content ul li{
+     width:33.33%;
+     float:left;
+     text-align:center;
+}
+.jd-Sk .product-content ul li img{
+    width:60%;
+    vertical-align:bottom;
+}

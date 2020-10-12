@@ -1,0 +1,45 @@
+*{
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color: transparent;
+    box-sizing:border-box;
+}
+body{
+    font-size:13px;
+    font-family:kaiti;
+}
+input{
+    outline:none;
+    border:none;
+    border:1px solid #e1e1e1;
+}
+ li{
+    list-style:none;
+}
+a{
+   text-decoration:none;
+   color:#ccc;
+}
+/* 清楚浮动影响 */
+.clearfix::before,.clearfix::after{
+    content:'';
+    display:block;
+    width:0;
+    height:0;
+    line-height:0;
+    visibility:hidden;
+    clear:both;
+}
+
+.floatL{
+    float:left;
+}
+.floatR{
+    float:right;
+}
+.marginL10{
+    margin-left:10px;
+}
+.marginR10{
+    margin-right:10px;
+}

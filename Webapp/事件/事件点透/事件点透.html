@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.item{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 200px;
+				height:200px;
+				background: pink;
+				opacity: .5;
+				display: none;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="item"></div>
+		<a href="http://www.atguigu.com">回娘家</a>
+	</body>
+    <script type="text/javascript">
+    
+    // 根本原因： pc端的事件在移动端有300毫秒延迟
+		window.onload=function(){
+			/*
+				1.pc端的事件可以在移动端触发
+				2.PC端事件有300毫秒延迟（因为触发事件太多需要判断）
+				3.移动端事件不会有延迟
+
+                你点击下去触发的是onmousedown 
+                可能会触发 onclick  ondbclick  touchStart  onmouseup  所以延迟300毫米判断到底触发了什么事件
+                事件在同一个像素点点下在弹起来是点击事件
+                然后在看那个函数有回调
+			*/
+			var item = document.querySelector(".item");		
+			var a = document.querySelector("a");		
+			/*item.addEventListener("click",function(){
+				console.log("click");
+			})
+			item.addEventListener("touchstart",function(){
+				console.log("touchstart");
+			})*/
+			item.addEventListener("touchstart",function(){
+				//console.log("touchend");
+				this.style.display="none";
+                /* 
+                在移动端点击完后会a标签跳转 ，
+                    因为 touchstart 不会有延迟300秒执行，
+                    点击完就执行 粉色层立即消失也触发了click事件 A标签默认跳转
+                */
+
+			})
+			a.addEventListener("click",function(){
+				console.log("click");
+                /* 
+                在移动端a标签不会跳转
+                 click 是pc 端的事件延迟了300毫秒执行
+                 也就是说粉色层（有粉色层在a上一层点不到a） 等了300 毫秒后消失
+                 然后点不到A
+                */
+			})
+			
+		}
+		
+		
+	</script>
+</html>

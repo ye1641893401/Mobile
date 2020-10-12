@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+		<title></title>
+		<style type="text/css">
+			/*
+			 * 	rem：相当于根标签的fontsize
+			 * 	根标签的fontsize = 1rem
+			 *  
+			 *  适配：实现页面在不同设备上等比
+			*/
+			
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#test{
+				width: 8rem;
+				height: 1rem;
+				background: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="test">test</div>
+	</body>
+    <script type="text/javascript">
+        // 动态改变根节点的font-size 大小 、clientWidth ==》布局视口
+        //上面设置了理想视口 == 布局视口 那 相当于把不同设备屏幕分成16分 
+        // 8 rem 占屏幕布局一半
+		var html = document.querySelector("html");
+		
+		html.style.fontSize = document.documentElement.clientWidth/16+"px";
+	</script>
+</html>

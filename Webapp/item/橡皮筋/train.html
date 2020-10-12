@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    html,body{
+        width:100%;
+        height:100%;
+    }
+    #wrap{
+        width:100%;
+        height:100%;
+        position:relative;
+        /* overflow: hidden; */
+    }
+    .nav{
+        width:100%;
+        height:50px;
+        background:lightblue;
+        position: fixed;
+        top:0;
+
+    }
+    .content{
+        background:pink;
+        position:absolute;
+        top:50px;
+        bottom:0;
+        left:0;
+        right:0;      
+        /* height:90%;    */
+    }
+    .tabBarNav{
+        height:50px;
+        /* background: blue; */
+        overflow: hidden;
+     
+    }
+    /* 1、父级元素宽度不固定，父级元素设置为inline-block或者添加float；
+    2、对父级元素使用min-width，这样只限制了最小的宽度，如果子元素变宽，父级同样会变宽； */
+    .tabBarNav ul{
+        /* 清楚 子元素 inline-block 的间隔 */
+        font-size:0;
+        white-space: nowrap;
+        /* li撑开父级宽度 */
+        float:left;
+        /*2. display:inline-block; */
+        /* min-width:100%; */
+     position:absolute;
+       
+    }
+    .tabBarNav ul li{
+        /* 把元素放一排可 inline-block */
+        display:inline-block;
+        font-size:14px;
+        padding: 0 10px;
+        line-height: 50px;
+        /* 放到一排 给父级加 */
+        /* white-space: nowrap; */
+        /* 此时发现ul 宽没有被撑开父级加float */
+    }
+    .tabBarNav ul li.active{
+        background:green;
+    }
+   
+    </style>
+</head>
+<body>
+    <!-- 需求：1.content不加高自己撑满 2.做滑屏-->
+    <div id = 'wrap'>
+        <div class='nav'></div>
+        <div class='content'>
+            <div class='tabBarNav'>
+                <ul >
+                    <li class='active'>你好</li>
+                    <li>不好</li>
+                    <li>去取</li>
+                    <li>回来</li>
+                    <li>不好</li>
+                    <li>去取</li>
+                    <li>回来</li>
+                    <li>你好</li>
+                    <li>不好</li>
+                    <li>去取</li>
+                    <li>回来</li>
+                    <li>不好</li>
+                    <li>去取</li>
+                    <li>回来</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+
+// 缓动效果 （目标位置-当前位置）/10 当前位置越来越大
+
+let wrap = document.querySelector('.tabBarNav')
+let itemBox = document.querySelector('.tabBarNav ul')
+darg(wrap,itemBox)
+function darg(showDom,moveDom){
+    //  1.展示的元素触发 手指事件
+    //  2.获取移动的元素
+    //  3.普通滑动效果
+    //  4. 当滑动元素在0位置换往右边滑动触发缓动效果回到 0 位置
+ 
+    let handStart = 0
+    let handEnd = 0
+    // 手指移动位置
+    let X = 0
+    // 元素位置
+    let domPrecentPosition = 0;
+    // 元素上一次移动位置
+    let preX = 0
+    // 判断元素是否从开始位置往后拉
+    // 
+
+     showDom.addEventListener('touchstart',(e)=>{
+         e.preventDefault()
+        //  获取手指开始位置
+        handStart = e.touches[0].clientX
+        // 元素开始的位置
+        // console.log(moveDom.offsetLeft)
+     })
+     showDom.addEventListener('touchmove',(e)=>{
+        handEnd = e.touches[0].clientX
+         e.preventDefault()
+         X = handEnd - handStart + preX
+      // 手指移动的位置 + 元素当前的位置 = 移动的距离
+      console.log(X)
+      moveDom.style.transform = `translateX(${X}px)`
+      
+     })
+     showDom.addEventListener('touchend',(e)=>{
+         e.preventDefault()
+         // 设置元素移动的位置
+        //  domPrecentPosition = moveDom.offsetLeft
+        if(X>=0){
+        //    橡皮筋效果回去
+            // moveDom.style.transition.duration =  "0.2s" 
+            // moveDom.style.transition = "translateX 2s";
+                moveDom.style.transition="1s transform";
+                moveDom.style.transform = `translateX(0px)`
+           
+            
+        }else{
+            moveDom.style.transform = `translateX(${X}px)`
+            preX = X
+        //  console.log(preX )
+        }
+         
+     })
+}
+
+				
+					
+			
+</script>
+</html>

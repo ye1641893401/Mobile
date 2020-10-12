@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+        
+        <meta name="viewport" content="width=device-width"/>
+        <!--  加他为了 使用document.documentElement.clientWidth/targetW;拿到理想视口 兼容性高 拿到之后再覆盖掉-->
+		<title></title>
+		<style type="text/css">
+			
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#test{
+				width: 320px;
+				height: 100px;
+				background: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="test">test</div>
+	</body>
+	<script type="text/javascript">
+		//将所有设备布局视口的宽度调整为设计图的宽度
+//   ios  content="width=375"
+        //    安卓不支持 content="width=375"
+        // screen.width  理想视口宽度
+		/*var targetW = 640;
+		var scale = screen.width/targetW;
+		var meta = document.createElement("meta");
+		meta.name = "viewport";
+		meta.content="initial-scale="+scale+",minimum-scale="+scale+",maximum-scale="+scale+",user-scalable=no";
+		document.head.appendChild(meta);*/
+		
+		
+		//viewport
+		/*viewport适配的原理：
+			viewport适配方案中，每一个元素在不同设备上占据的css像素的个数是一样的。但是css像素和物理像素的比例是不一样的，等比的*/
+		/*viewport适配的优缺点：
+			优点:所量即所得
+			缺点:没有使用完美视口*/
+		(function(){
+			var targetW = 640;
+			var scale = document.documentElement.clientWidth/targetW;
+			var meta =	document.querySelector("meta[name='viewport']");
+			meta.content="initial-scale="+scale+",minimum-scale="+scale+",maximum-scale="+scale+",user-scalable=no";
+		})()
+		
+		/*
+          设计图 750
+          设备独立像素 750     那一个 css像素 = 一个物理像素  （750沾满整个屏幕）
+
+          设备独立向素 375    那一个  css像素 = 占据一个物理像素 （375沾满整个屏幕）
+
+          那需要 一个css像素在不同设备一样大 需要放大 
+          假如在  750 上  写  750 px   那么 到 375  也要沾满整个屏幕 需要 一个css像素占据 0.5 个物理像素
+        document.documentElement.clientWidth/targetW
+         设备独立像素 750     750/750 = 1
+         设备独立向素 375     375/750 = 0.5
+        
+        */
+	</script>
+</html>
