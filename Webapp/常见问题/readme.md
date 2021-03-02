@@ -6,7 +6,7 @@ h5 拉起app 下载
 https://blog.csdn.net/echo_ae/article/details/80389769
 https://www.cnblogs.com/wangyuanyuan-blog/p/6860907.html
 https://echozq.github.io/echo-blog/2015/11/13/callapp.html
-
+https://www.cnblogs.com/dhcn/p/7124686.html
 iframe
 var last = Date.now(),
 	doc = window.document,
